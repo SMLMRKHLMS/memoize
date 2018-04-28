@@ -4,7 +4,12 @@ function memoize(fn) {
   const monadic = fn.length === 1
   const serializer = JSON.stringify
 
-  function isPrimitive(value) { return value == null || (typeof value !== 'function' && typeof value !== 'object') }
+  function isPrimitive(value) { 
+    return (
+      value == null || 
+      (typeof value !== 'function' && typeof value !== 'object')
+    );
+  }
 
   return function memoized(first, ...args) {
     const key = monadic && isPrimitive(first) ? first : serializer([first, ...args])
