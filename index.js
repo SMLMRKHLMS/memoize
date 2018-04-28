@@ -8,7 +8,7 @@ function memoize(fn) {
     return (
       value == null || 
       (typeof value !== 'function' && typeof value !== 'object')
-    );
+    )
   }
 
   return function memoized(first, ...args) {
